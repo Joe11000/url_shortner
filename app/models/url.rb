@@ -1,7 +1,12 @@
 class Url < ActiveRecord::Base
   # Remember to create a migration!
 
-  before_save do |url|
+  before_save :ensure_long_url_is_valid
+
+protected:
+  def ensure_long_url_is_valid
+    @longs = self.where(long_url: = url.long_url)
+
     # if long url is in the database already 
         #then increment the click_counter 
         # show the short url that already exists
@@ -14,6 +19,7 @@ class Url < ActiveRecord::Base
         # while short exists
             # create another short url
         # end
+  end
 end
 
 

@@ -6,7 +6,6 @@ end
 post '/urls' do
   # create a new Url
   p params
-
   @shorty = Url.create(params[:url])
 end
 
