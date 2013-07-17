@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Welcome to Sinatra!</h1>
-  <p>The Amazing Shortener!</p>
+  <p>Hello, world!</p>
 
   <table>
     <tr>
