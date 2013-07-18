@@ -1,6 +1,6 @@
 <div class="container">
-    if @shorty.short_url
-    <a href=<%= @shorty %> ></a>
+
+    <a href=<%= (@show == 'long') ? @shorty.short_url : @shorty.long_url %> ><%= (@show == 'short') ? @shorty.short_url : @shorty.long_url %></a>
     <br>
     <input type="submit" value="shorten url">
 
