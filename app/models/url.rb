@@ -1,40 +1,33 @@
 class Url < ActiveRecord::Base
   # Remember to create a migration!
 
-  #before_save :ensure_long_url_is_valid
-
   def get_shorten!(long_url)
-    puts "pie"
-    p long_url 
     matched_long_url_arr = Url.where("long_url = ?", long_url)
-    p matched_long_url_arr 
     if matched_long_url_arr.empty?
       newLongUrl!(long_url)
     else
-      oldLongUrl!(long_url)
+      puts "hi"
+      oldLongUrl!(matched_long_url_arr.first)
     end
   end
 
   
   # long url is in the database already 
-    def oldLongUrl!(long_url) 
-      puts "OldLong" 
-      url = Url.find_by("long_url = ?", long_url)
-      url.click_counter += 1      #then increment the click_counter 
-      url.short_url               # show the short url that already exists
+    def oldLongUrl!(old_url_entry) 
+      old_url_entry.click_counter += 1      #then increment the click_counter 
+      old_url_entry.short_url               # show the short url that already exists
     end
 
 # the long url doesn't exist in the database model Url
     def newLongUrl!(long_url) 
-        puts "NewLong" 
         # create a short url 
         short_url = ""
-        'a1'.upto('zzzzz9') do |i|
+        'a1'.upto('zzzzz9') do |index|
           # check to see if short url already exists
-          i = '/' + i  
-          Url.where("long_url = ?",  i)
-          if Url.where("long_url = ?",  i).size == 0
-            short_url = "#{i}"
+          index = '/' + index  
+
+          if Url.where("short_url = ?",  index).size == 0
+            short_url = "#{index}"
             break
           end
         end
