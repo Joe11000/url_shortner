@@ -2,6 +2,14 @@
   <h1>Welcome to Sinatra!</h1>
   <p>The Amazing Shortener!</p>
 
+  <% if @url && @url.errors.any? %>
+    <div class="errors">
+      <% @url.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+      <% end %>
+    </div>
+  <% end %>
+
   <form action="/urls" method="post">
   
     <input id="title" type="text" name="url[long_url]" placeholder="Enter Full URL Here">

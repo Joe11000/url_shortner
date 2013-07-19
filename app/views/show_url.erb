@@ -1,9 +1,10 @@
 <div class="container">
 
-    <a href=<%= (@show == 'long') ? @shorty.short_url : @shorty.long_url %> ><%= (@show == 'short') ? @shorty.short_url : @shorty.long_url %></a>
-    <br>
-    <input type="submit" value="shorten url">
+  <form action="/clicked/<%= @url.short_url%>" method="get">
+  
+  <a href="<%=  @url.long_url %>"><%= @url.long_url  %> : <%= @url.short_url  %></a>
 
+  </form>
 
 </div>
  
